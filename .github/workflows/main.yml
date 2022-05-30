@@ -24,5 +24,5 @@ jobs:
         cache: maven
     - name: Build project with Maven
       run: |
-        org-imt-testIntegrationContinue
+        cd org-imt-testIntegrationContinue
         mvn verify
