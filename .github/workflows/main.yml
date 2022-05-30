@@ -23,4 +23,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build project with Maven
-      run: mvn verify
+      run: |
+        org-imt-testIntegrationContinue
+        mvn verify
