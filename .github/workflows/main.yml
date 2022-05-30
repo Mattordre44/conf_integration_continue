@@ -22,7 +22,16 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+    - name: Cache SonarCloud packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.sonar/cache
+        key: ${{ runner.os }}-sonar
+        restore-keys: ${{ runner.os }}-sonar   
+        
     - name: Build project with Maven
+      env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
         cd org-imt-testIntegrationContinue
-        mvn verify
+        mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Mattordre44_conf_integration_continue
